@@ -4,7 +4,7 @@
 	"description": "Creating blogs, storing and retrieving data from mongodb database ",
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon app.js"
+		"start": "node app.js"
 	},
 	"author": "Harsh Nichani",
 	"license": "ISC",
