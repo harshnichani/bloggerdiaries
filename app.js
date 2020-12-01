@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const homeroute = require("./routes/homeroute");
 const blogroute = require("./routes/blogroute");
-require("dotenv").config({ path: "./config/config.env" });
 
 // Make instance from express
 const app = express();
