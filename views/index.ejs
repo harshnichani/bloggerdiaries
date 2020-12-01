@@ -1,0 +1,45 @@
+<!-- Include Head -->
+<%- include('./partials/head') %>
+
+<body>
+  <!-- Include Navigation -->
+  <%- include('./partials/nav') %>
+
+  <div class="container my-3">
+    <h3 style="text-align: center;">All Blogs</h3>
+    <hr>
+    <% if (blogs.length > 0) { %>
+    <% blogs.forEach(element => { %>
+    <div class="card my-3 px-2 text-center">
+      <div class="card-body">
+        <h5 class="card-title" style="font-size: 22px;"><%= element.title %> </h5>
+        <p class="card-text" style="font-size: 20px;"><%= element.body %> </p>
+        <a id='deletebtn' class="btn btn-primary" data-id="<%= element._id %>">Delete</a>
+      </div>
+    </div>
+    <% }) %>
+    <% } else { %>
+    <p style="text-align: center;"> Sorry ! No Blogs to Display!!! Please add new blogs</p>
+    <% } %>
+  </div>
+
+  <!-- Including Footer -->
+  <%- include('./partials/footer') %>
+
+  <script>
+    let deletebtn = document.getElementById('deletebtn');
+
+    deletebtn.addEventListener('click', deletePost);
+
+    function deletePost(e) {
+      const endpoint = `/${deletebtn.dataset.id}`;
+
+      fetch(endpoint, { method: 'DELETE' })
+        .then((response) => response.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch((err) => console.log(err));
+    }
+  </script>
+</body>
+
+</html>
